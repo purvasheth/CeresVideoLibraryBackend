@@ -23,15 +23,11 @@ router
     );
   })
   .post(async (req, res) => {
-    wrapWithTryCatch(res, () => {
-      addPlaylist(req, res);
-    });
+    wrapWithTryCatch(res, () => addPlaylist(req, res));
   });
 
 router.param("playlistId", async (req, res, next, playlistId) => {
-  wrapWithTryCatch(res, () => {
-    getPlaylistById(req, res, next, playlistId);
-  });
+  wrapWithTryCatch(res, () => getPlaylistById(req, res, next, playlistId));
 });
 
 router
@@ -40,9 +36,7 @@ router
     wrapWithTryCatch(res, () => updatePlaylistName(req, res));
   })
   .delete(async (req, res) => {
-    wrapWithTryCatch(res, () => {
-      deletePlaylist(req, res);
-    });
+    wrapWithTryCatch(res, () => deletePlaylist(req, res));
   });
 
 router
@@ -51,9 +45,7 @@ router
     wrapWithTryCatch(res, () => addVideoToPlaylist(req, res));
   })
   .delete(async (req, res) => {
-    wrapWithTryCatch(res, () => {
-      removeVideoFromPlaylist(req, res);
-    });
+    wrapWithTryCatch(res, () => removeVideoFromPlaylist(req, res));
   });
 
 module.exports = router;

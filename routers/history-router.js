@@ -15,9 +15,7 @@ router
     wrapWithTryCatch(res, () => getHistoryVideos(res), 502);
   })
   .post(async (req, res) => {
-    wrapWithTryCatch(res, () => {
-      addOrUpdateVideo(req, res);
-    });
+    wrapWithTryCatch(res, () => addOrUpdateVideo(req, res));
   });
 
 router.param("videoId", async (req, res, next, videoId) => {
